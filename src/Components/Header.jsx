@@ -8,7 +8,7 @@ const Header = () => {
 			<h1 className="header-font text-5xl">The Daily Chronicle </h1>
 			<p className=" text-accent">Journalism Without Fear or Favour</p>
 			{/* <p>{new Date().toLocaleDateString()}</p> */}
-			<p>{format(new Date(), "PPPP")}</p>
+			<p className="text-accent">{format(new Date(), "PPPP")}</p>
 		</div>
 	);
 };
