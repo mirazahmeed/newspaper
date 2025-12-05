@@ -1,10 +1,12 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Outlet, useLoaderData } from "react-router";
 import Header from "../COmponents/Header";
 import LatestNews from "../Components/LatestNews";
 import Navbar from "../Components/Navbar";
-import LestAside from "../Components/HomeLayout/LestAside";
+import LestAside from "../Components/HomeLayout/LeftAside";
 import RightAside from "../Components/HomeLayout/RightAside";
+
+
 
 const HomeLayout = () => {
 	return (
@@ -18,7 +20,7 @@ const HomeLayout = () => {
 					<Navbar />
 				</nav>
 			</header>
-			<main className="container mx-auto grid grid-cols-12 *:border">
+			<main className="container mx-auto grid grid-cols-12">
 				<aside className="left_nav col-span-3">
 					<LestAside />
 				</aside>
