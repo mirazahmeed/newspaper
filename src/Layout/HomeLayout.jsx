@@ -6,8 +6,6 @@ import Navbar from "../Components/Navbar";
 import LestAside from "../Components/HomeLayout/LeftAside";
 import RightAside from "../Components/HomeLayout/RightAside";
 
-
-
 const HomeLayout = () => {
 	return (
 		<div>
@@ -20,7 +18,7 @@ const HomeLayout = () => {
 					<Navbar />
 				</nav>
 			</header>
-			<main className="container mx-auto grid grid-cols-12">
+			<main className="container mx-auto grid grid-cols-12 gap-4">
 				<aside className="left_nav col-span-3">
 					<LestAside />
 				</aside>
