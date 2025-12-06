@@ -42,3 +42,9 @@
 }
 
 
+/* catagory button */
+
+a.active{
+    background-color: black;
+    color: white;
+}
