@@ -65,24 +65,22 @@ const NewsCard = ({ news }) => {
 
 				{/* Details */}
 				<div>
-					{
-						news.details.length > 100 ? (
-							<>
-								<p className="text-gray-600 text-sm line-clamp-3">
-									{news.details}
-								</p>
-								<a
-									href="#"
-									className="inline-flex text-xs font-semibold text-red-500 hover:underline">
-									Read More
-								</a>
-							</>
-						) : (
+					{news.details.length > 100 ? (
+						<>
 							<p className="text-gray-600 text-sm line-clamp-3">
 								{news.details}
 							</p>
-						)
-					}
+							<a
+								href="#"
+								className="inline-flex text-xs font-semibold text-red-500 hover:underline">
+								Read More
+							</a>
+						</>
+					) : (
+						<p className="text-gray-600 text-sm line-clamp-3">
+							{news.details}
+						</p>
+					)}
 				</div>
 
 				{/* Footer */}
