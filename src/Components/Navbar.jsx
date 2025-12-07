@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { FaRegCircleUser } from "react-icons/fa6";
 
 const Navbar = () => {
@@ -14,7 +14,9 @@ const Navbar = () => {
 			<div className="login-area flex gap-2 items-center">
 				<FaRegCircleUser className="text-4xl" />
 
-				<button className="btn btn-primary rounded-none">Login</button>
+				<Link to="/auth/login" className="btn btn-primary rounded-none">
+					Login
+				</Link>
 			</div>
 		</div>
 	);
