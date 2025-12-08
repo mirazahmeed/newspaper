@@ -13,6 +13,7 @@ const Navbar = () => {
 			</div>
 			<div className="login-area flex gap-2 items-center">
 				<FaRegCircleUser className="text-4xl" />
+
 				<Link to="/auth/login" className="btn btn-primary rounded-none">
 					Login
 				</Link>
