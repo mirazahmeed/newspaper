@@ -1,10 +1,13 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import { FaRegCircleUser } from "react-icons/fa6";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
+	const { user } = use(AuthContext);
 	return (
 		<div className="flex justify-between items-center p-2 mt-2">
+			{user && user.email}
 			<div></div>
 			<div className="nav flex gap-5 text-accent">
 				<NavLink to="/">Home</NavLink>
