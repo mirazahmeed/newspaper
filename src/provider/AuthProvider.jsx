@@ -2,11 +2,7 @@ import React, { createContext, useState } from "react";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-	const [user, setUser] = useState({
-		name: "Alize@gmail.com",
-		email: "Alize@gmail.com",
-		photoURL: "",
-	});
+	const [user, setUser] = useState(null);
 	const authData = {
 		user,
 		setUser,
