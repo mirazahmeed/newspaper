@@ -10,6 +10,7 @@ const Login = () => {
 				</h2>
 				<div className="card-body">
 					<form className="fieldset">
+						{/* email */}
 						<label className="label">Email</label>
 						<input
 							type="email"
