@@ -1,9 +1,11 @@
 import React from "react";
 import { FaRegBookmark } from "react-icons/fa6";
 import { IoMdShare } from "react-icons/io";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
 	const {
+		id,
 		title,
 		author,
 		details,
@@ -57,7 +59,7 @@ const NewsCard = ({ news }) => {
 				{/* Image */}
 				<div className="overflow-hidden">
 					<img
-						src={news.thumbnail_url}
+						src={news.image_url}
 						alt={news.title}
 						className="w-full h-56 object-cover"
 					/>
@@ -81,11 +83,11 @@ const NewsCard = ({ news }) => {
 							<p className="text-gray-600 text-sm line-clamp-3">
 								{news.details}
 							</p>
-							<a
-								href="#"
+							<Link
+								to={`/news_details/${id}`}
 								className="inline-flex text-xs font-semibold text-red-500 hover:underline">
 								Read More
-							</a>
+							</Link>
 						</>
 					) : (
 						<p className="text-gray-600 text-sm line-clamp-3">
