@@ -4,7 +4,17 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
-	const { user } = use(AuthContext);
+	const { user, logout } = use(AuthContext);
+	const handleLogout = () => {
+		logout()
+			.then(() => {
+				console.log("Logout");
+				alert("Logout successfully");
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
 	return (
 		<div className="flex justify-between items-center p-2 mt-2">
 			{user && user.email}
@@ -17,9 +27,19 @@ const Navbar = () => {
 			<div className="login-area flex gap-2 items-center">
 				<FaRegCircleUser className="text-4xl" />
 
-				<Link to="/auth/login" className="btn btn-primary rounded-none">
-					Login
-				</Link>
+				{user ? (
+					<button
+						onClick={handleLogout}
+						className="btn btn-primary rounded-none">
+						Logout
+					</button>
+				) : (
+					<Link
+						to="/auth/login"
+						className="btn btn-primary rounded-none">
+						Login
+					</Link>
+				)}
 			</div>
 		</div>
 	);
