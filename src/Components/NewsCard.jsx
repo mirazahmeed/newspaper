@@ -3,6 +3,17 @@ import { FaRegBookmark } from "react-icons/fa6";
 import { IoMdShare } from "react-icons/io";
 
 const NewsCard = ({ news }) => {
+	const {
+		title,
+		author,
+		details,
+		image_url,
+		tags,
+		thumbnail_url,
+		total_view,
+		rating,
+		published_date,
+	} = news;
 	return (
 		<div className="max-w-xl mx-auto bg-white shadow border border-gray-100 space-y-4 mt-4">
 			{/* Header */}
@@ -46,7 +57,7 @@ const NewsCard = ({ news }) => {
 				{/* Image */}
 				<div className="overflow-hidden">
 					<img
-						src={news.image_url}
+						src={news.thumbnail_url}
 						alt={news.title}
 						className="w-full h-56 object-cover"
 					/>
