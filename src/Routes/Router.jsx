@@ -7,6 +7,7 @@ import Register from "../Pages/Register";
 import AuthLayout from "../Layout/AuthLayout";
 import NewsDetails from "../Pages/NewsDetails";
 import PrivateRoute from "../provider/PrivateRoute";
+import Profile from "../Components/Profile";
 
 const Router = createBrowserRouter([
 	{
@@ -35,6 +36,10 @@ const Router = createBrowserRouter([
 			{
 				path: "/auth/login",
 				element: <Login></Login>,
+			},
+			{
+				path: "/auth/profile",
+				element: <Profile></Profile>,
 			},
 		],
 	},
