@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa6";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const SocialLogin = () => {
-	const { googleSignIn } = use(AuthContext);
+	const { googleSignIn, githubSignIn } = use(AuthContext);
 	const handleGoogleSignIn = () => {
 		googleSignIn()
 			.then((result) => {
@@ -16,6 +16,18 @@ const SocialLogin = () => {
 				console.log(errorMessage);
 			});
 	};
+	const handleGithubSignIn = () => {
+		githubSignIn()
+			.then((result) => {
+				const user = result.user;
+				console.log(user);
+			})
+			.catch((error) => {
+				const errorMessage = error.message;
+				console.log(errorMessage);
+			});
+	};
+
 	return (
 		<div className="border border-gray-200 p-2">
 			<h3 className="font-bold text-xl">Login With</h3>
@@ -26,7 +38,9 @@ const SocialLogin = () => {
 					<FcGoogle size={20} />
 					Login With Google
 				</button>
-				<button className="btn btn-primary btn-outline text-xs md:text-sm hover:bg-gray-200 hover:border-blue-400 hover:text-blue-400">
+				<button
+					onClick={handleGithubSignIn}
+					className="btn btn-primary btn-outline text-xs md:text-sm hover:bg-gray-200 hover:border-blue-400 hover:text-blue-400">
 					<FaGithub size={20} />
 					Login With Github
 				</button>
