@@ -6,7 +6,7 @@ const CategoryNews = () => {
 	const id  = useParams();
 	const convertedId = parseInt(id.id);
 	const data = useLoaderData();
-
+		
 	const [categoryNews, setCategoryNews] = useState([]);
 
 	useEffect(() => {

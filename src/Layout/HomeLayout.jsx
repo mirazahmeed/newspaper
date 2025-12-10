@@ -1,18 +1,22 @@
 import React from "react";
-import { Outlet, useLoaderData } from "react-router";
+import { Outlet, useLoaderData, useNavigate } from "react-router";
 import Header from "../COmponents/Header";
 import LatestNews from "../Components/LatestNews";
 import Navbar from "../Components/Navbar";
 import LestAside from "../Components/HomeLayout/LeftAside";
 import RightAside from "../Components/HomeLayout/RightAside";
+import Loading from "../Components/Loading";
 
 const HomeLayout = () => {
+	const data = useLoaderData();
+	
+	const { state } = useNavigate();
 	return (
 		<div>
 			<header>
 				<Header />
 				<section className="container mx-auto">
-					<LatestNews />
+					<LatestNews data={data}/>
 				</section>
 				<nav className="container mx-auto">
 					<Navbar />
@@ -23,7 +27,11 @@ const HomeLayout = () => {
 					<LestAside />
 				</aside>
 				<section className="main_content col-span-6">
-					<Outlet></Outlet>
+					{state === "loading" ? (
+						<Loading></Loading>
+					) : (
+						<Outlet></Outlet>
+					)}
 				</section>
 				<aside className="right_nav col-span-3 sticky top-0 h-fit">
 					<RightAside />

@@ -1,6 +1,5 @@
 import React, { use } from "react";
 import { Link, NavLink } from "react-router";
-import { FaRegCircleUser } from "react-icons/fa6";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
@@ -8,11 +7,10 @@ const Navbar = () => {
 	const handleLogout = () => {
 		logout()
 			.then(() => {
-				console.log("Logout");
 				alert("Logout successfully");
 			})
 			.catch((error) => {
-				console.error(error);
+				alert(error.message);
 			});
 	};
 	return (
