@@ -36,7 +36,7 @@ const Register = () => {
 		} else {
 			setPasswordError("");
 		}
-		console.log({ name, photoURL, email, password });
+		// console.log({ name, photoURL, email, password });
 		createUser(email, password)
 			.then((result) => {
 				const user = result.user;
@@ -86,7 +86,7 @@ const Register = () => {
 							type="text"
 							name="photoURL"
 							defaultValue={
-								"https://i.ibb.co.com/B2CQ44N5/alrick-gillard-0m-N84vxig-L0-unsplash.jpg"
+								"https://i.ibb.co.com/yFTqG53J/8578.jpg"
 							}
 							className="input rounded-none"
 							placeholder="Enter your photo URL"
