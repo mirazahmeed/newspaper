@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
-	const { createUser, setUser } = use(AuthContext);
+	const { createUser, setUser, updateUser } = use(AuthContext);
 	const [error, setError] = useState("");
 	const [nameError, setNameError] = useState("");
 	const [photoURLError, setPhotoURLError] = useState("");
@@ -40,7 +40,18 @@ const Register = () => {
 		createUser(email, password)
 			.then((result) => {
 				const user = result.user;
-				setUser(user);
+				updateUser({
+					displayName: name,
+					photoURL: photoURL,
+				})
+					.then(() => {
+						setUser({ ...user, name, photoURL });
+					})
+					.catch((error) => {
+						const errorMessage = error.message;
+						setError(errorMessage);
+						setUser(user);
+					});
 			})
 			.catch((error) => {
 				const errorMessage = error.message;
@@ -66,7 +77,9 @@ const Register = () => {
 							placeholder="Enter your name"
 							required
 						/>
-						{nameError && <p className="text-red-500">{nameError}</p>}
+						{nameError && (
+							<p className="text-red-500">{nameError}</p>
+						)}
 						{/* PhotoURL */}
 						<label className="label">PhotoURL</label>
 						<input
@@ -92,7 +105,9 @@ const Register = () => {
 							placeholder="Enter your email"
 							required
 						/>
-						{emailError && <p className="text-red-500">{emailError}</p>}
+						{emailError && (
+							<p className="text-red-500">{emailError}</p>
+						)}
 						{/* Password */}
 						<label className="label">Password</label>
 						<input
