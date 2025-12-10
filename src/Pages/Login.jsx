@@ -1,9 +1,12 @@
-import React, { use } from "react";
-import { Link } from "react-router";
+import React, { use, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
+	const [error, setError] = useState("");
 	const { signIn } = use(AuthContext);
+	const location = useLocation();
+	const navigate = useNavigate();
 	const handleLogin = (e) => {
 		e.preventDefault();
 		const form = e.target;
@@ -13,12 +16,12 @@ const Login = () => {
 		signIn(email, password)
 			.then((result) => {
 				const user = result.user;
-				console.log(user);
+				navigate(location.state ? location.state : "/");
 			})
 			.catch((error) => {
 				const errorMessage = error.message;
-				const errorCode = error.code;
-				alert(errorMessage, errorCode);
+				// const errorCode = error.code;
+				setError(errorMessage);
 			});
 	};
 	return (
@@ -48,6 +51,11 @@ const Login = () => {
 							className="input rounded-none"
 							placeholder="Enter your password"
 						/>
+						{
+							error && (
+								<p className="text-red-500">{error}</p>
+							)
+						}
 						<div>
 							<a className="link link-hover">Forgot password?</a>
 						</div>

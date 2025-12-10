@@ -1,16 +1,41 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
 	const { createUser, setUser } = use(AuthContext);
+	const [error, setError] = useState("");
+	const [nameError, setNameError] = useState("");
+	const [photoURLError, setPhotoURLError] = useState("");
+	const [emailError, setEmailError] = useState("");
+	const [passwordError, setPasswordError] = useState("");
 	const handleRegister = (e) => {
 		e.preventDefault();
 		const form = e.target;
 		const name = form.name.value;
+		if (name.length < 5) {
+			setNameError("Name must be at least 5 characters long");
+		} else {
+			setNameError("");
+		}
 		const photoURL = form.photoURL.value;
+		if (photoURL === "") {
+			setPhotoURLError("Photo URL is required");
+		} else {
+			setPhotoURLError("");
+		}
 		const email = form.email.value;
+		if (email === "") {
+			setEmailError("Email is required");
+		} else {
+			setEmailError("");
+		}
 		const password = form.password.value;
+		if (password === "") {
+			setPasswordError("Password is required");
+		} else {
+			setPasswordError("");
+		}
 		console.log({ name, photoURL, email, password });
 		createUser(email, password)
 			.then((result) => {
@@ -18,7 +43,9 @@ const Register = () => {
 				setUser(user);
 			})
 			.catch((error) => {
-				console.error(error.message);
+				const errorMessage = error.message;
+				// const errorCode = error.code;
+				setError(errorMessage);
 			});
 	};
 	return (
@@ -39,6 +66,7 @@ const Register = () => {
 							placeholder="Enter your name"
 							required
 						/>
+						{nameError && <p className="text-red-500">{nameError}</p>}
 						{/* PhotoURL */}
 						<label className="label">PhotoURL</label>
 						<input
@@ -51,6 +79,9 @@ const Register = () => {
 							placeholder="Enter your photo URL"
 							required
 						/>
+						{photoURLError && (
+							<p className="text-red-500">{photoURLError}</p>
+						)}
 						{/* Email */}
 						<label className="label">Email</label>
 						<input
@@ -61,6 +92,7 @@ const Register = () => {
 							placeholder="Enter your email"
 							required
 						/>
+						{emailError && <p className="text-red-500">{emailError}</p>}
 						{/* Password */}
 						<label className="label">Password</label>
 						<input
@@ -74,6 +106,9 @@ const Register = () => {
 							pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 							title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number"
 						/>
+						{passwordError && (
+							<p className="text-red-500">{passwordError}</p>
+						)}
 						<div>
 							<a className="link link-hover">Forgot password?</a>
 						</div>
