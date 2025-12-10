@@ -42,9 +42,11 @@ const Navbar = () => {
 						tabIndex="-1"
 						className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
 						<li>
-							<Link to="/auth/profile" className="justify-between">
+							{user ? <Link to="/auth/profile" className="justify-between">
 								Profile
-							</Link>
+							</Link> : <Link to="/auth/login" className="justify-between">
+								Profile
+							</Link>}
 						</li>
 						<li>
 							<Link to="/auth/register" className="justify-between">
